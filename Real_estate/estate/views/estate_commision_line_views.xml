@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="commision_line_view_tree" model="ir.ui.view">
+        <field name="name">commision.line.tree</field>
+        <field name="model">commision_line</field>
+        <field name="arch" type="xml">
+            <tree create="False">
+                <field name="sale_order_id"/>
+                <field name="invoice_id"/>
+                <field name="commision_contact"/>
+                <field name="position"/>
+                <field name="commision"/>
+                <field name="profit"/>
+                <field name="status"  decoration-success="status == 'in_bill'"
+                decoration-muted="status == 'draft'" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.server" id="action_create_bill">
+        <field name="name">create bill</field>
+        <field name="model_id" ref="model_commision_line"/>
+        <field name="binding_model_id" ref="model_commision_line"/>
+        <field name="state">code</field>
+        <field name="binding_view_types">list</field>
+        <field name="code">
+    if records:
+        records._action_create_bill()
+        </field>
+    </record>
+    
+    <record id="commision_employee_action" model="ir.actions.act_window">
+        <field name="name">Commision</field>
+        <field name="res_model">commision_line</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>

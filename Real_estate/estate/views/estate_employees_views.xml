@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>       
+    <record id="employee_commision_view_tree" model="ir.ui.view">
+        <field name="name">employee.commision.tree</field>
+        <field name="model">employee_commision</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="employee_position"/>
+                <field name="employee_commision"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="employees_action" model="ir.actions.act_window">
+        <field name="name">Employees Position</field>
+        <field name="res_model">employee_commision</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

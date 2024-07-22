@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Rental Contracts" id="rental_contract_menu_root" parent="real_estate.menu_real_estate_root" sequence="1"/>
+        <menuitem id="rental_contract_menu_action" parent="rental_contract_menu_root" action="inherit_sale_order_action" sequence="1"/>
+    
+        <menuitem name="Availability" id="availability_menu_root" parent="real_estate.menu_real_estate_root" sequence="2"/>
+            <menuitem id="rental_gantt_menu" parent="availability_menu_root" action="gantt_sale_order_action" sequence="1"/>
+    
+        <menuitem name="Commission" id="commission_menu_root" parent="real_estate.menu_real_estate_root" sequence="3"/>
+            <menuitem id="crmlead_model_menu_action" parent="commission_menu_root" action="inherit_crm_lead_action" sequence="1"/>
+            <menuitem id="res_partner_menu_action" parent="commission_menu_root" action="inherit_res_partner_action" sequence="2"/>
+            <menuitem id="employees_menu_action" parent="commission_menu_root" action="employees_action" sequence="3"/>
+            <menuitem id="commission_menu_action" parent="commission_menu_root" action="commision_employee_action" sequence="4"/>
+        
+</odoo>

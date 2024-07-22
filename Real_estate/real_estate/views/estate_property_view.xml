@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_account_analytic_account_view_kanban" model="ir.ui.view">
+            <field name="name">account.analytic.account.kanban</field>
+            <field name="model">account.analytic.account</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by = 'property_sale'>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_card oe_kanban_global_click">
+                                <div class="o_kanban_record_top mb16">
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                </div>
+                                <div>
+                                    <span class="o_kanban_record_subtitle">
+                                        <field name="address"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="account_analytic_account_view_form" model="ir.ui.view">
+            <field name="name">account.analytic.account.form</field>
+            <field name="model">account.analytic.account</field>
+            <field name="arch" type="xml">
+                <form string="Property">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_product" type="object" class="oe_stat_button" icon="fa-file-text-o" invisible="product_created == False">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="count_product"/>
+                                    </span>
+                                    <span class="o_stat_text">
+                            Product
+                                    </span>
+                                </div>
+                            </button>
+                        </div>
+                        <field name="property_image" widget="image" class="oe_avatar ml-3 mr-3" options="{'size': [0, 180]}"/>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" class="oe_inline" placeholder="e.g. Apartment Oxford Street"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="published"/>
+                                <field name="sequence_id"/>
+                                <field name="building_id"/>
+                                <field name="plan_id" invisible="1"/>
+                                <field name="address"/>
+                            </group>
+                            <group>
+                                <field name="property_sale" widget="radio"/>
+                                <field name="sale_price" invisible="property_sale != 'Sale'" />
+                                <field name="property_type"/>
+                                <field name="product_created" invisible="1"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Description">
+                                <field name="website_description" placeholder="Describe your property here"/>
+                            </page>
+                            <page string="Gallery">
+                                <field name="property_images" widget="many2many_binary" options="{'accepted_file_extensions': 'image/*'}" string="Add Images"/>
+                            </page>
+                            <page string="Documents">
+                                <field name="property__document" widget="many2many_binary"/>
+                            </page>
+                            <page string="Meter Readings">
+                                <field name="property_meter_reading" context="{'default_account_analytic_account_id': id}">
+                                    <tree editable="bottom">
+                                        <field name="meter_id"/>
+                                        <field name="date"/>
+                                        <field name="quantity"/>
+                                        <field name="usage"/>
+                                        <field name="description"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="custom_account_analytic_account_action_kanban" model="ir.actions.act_window">
+            <field name="name">Properties</field>
+            <field name="res_model">account.analytic.account</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="view_id" ref="custom_account_analytic_account_view_kanban"/>
+            <field name="domain">[('published', '=', True)]</field>
+        </record>
+
+    </data>
+</odoo>

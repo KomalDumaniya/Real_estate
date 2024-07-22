@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="contactus_template_inherit" inherit_id="website.contactus">
+            <xpath expr="//input[@name='subject']" position="after">
+                <div class="form-group">
+                    <label class="control-label" for="property_type">Property Type</label>
+                    <div class="controls">
+                        <select id="property_type" name="property_type" class="form-control">
+                            <option value="">Select Property Type</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="industrial">Industrial</option>
+                        </select>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

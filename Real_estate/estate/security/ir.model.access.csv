@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_commision,access_employee_commision,model_employee_commision,base.group_user,1,1,1,1
+access_commision_line,access_commision_line,model_commision_line,base.group_user,1,1,1,1
+

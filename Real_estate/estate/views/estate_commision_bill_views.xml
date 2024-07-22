@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>        
+    <record id="action_move_invoice_type" model="ir.actions.act_window">
+        <field name="name">Vender Bill</field>
+        <field name="res_model">account.move</field>
+        <field name="context">{'default_move_type': 'in_invoice'}</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('invoice_line_ids.name', '=', 'commission')]</field> 
+    </record>
+</odoo>

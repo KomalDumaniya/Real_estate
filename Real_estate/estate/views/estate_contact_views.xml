@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='function']" position="attributes">
+                <attribute name="invisible" >1</attribute>
+            </xpath>
+            <xpath expr="//group/field[@name='function']" position="after">
+                <field name="position" string="Designation(Role)"/>
+                <field name="commision"/>
+                <field name="commision_location" required = "True"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="inherit_res_partner_action" model="ir.actions.act_window">
+        <field name="name">Work With Us</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">['|',('commision_location', '=', 'sale_order'),('commision_location', '=', 'confirm_invoice')]</field> 
+    </record>
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/div/button[@name='action_view_invoice']" position="after">
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_commision_details" string="commision details" type="object" class="oe_stat_button" icon="fa-money">
+                        <div class="o_stat_info">
+                            <field name="total_profit" class="o_stat_value"/>
+                            <span class="o_stat_text">Commision</span>
+                        </div>
+                    </button>
+                </div>
+            </xpath>
+            <xpath expr="//group/field[@name='sale_order_template_id']" position="before">
+                <field name="property" domain="[('plan_id', '=', 'Properties')]"/>
+            </xpath>
+            <xpath expr="//field[@name='plan_id']" position="attributes">
+                <attribute name="invisible">property.property_sale == 'sale'</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='order_lines']" position="after">
+                <page name="commision_lines" string="Working Team">
+                    <field name="commision_line_id">
+                        <tree editable="bottom">
+                            <field name="commision_contact" domain="[('commision_location', '=', 'sale_order')]"/>
+                            <field name="position"/>
+                            <field name="commision"/>
+                            <field name="profit"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="inherit_sale_order_action" model="ir.actions.act_window">
+        <field name="name">Rental Contract</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('property.plan_id', '=', 'Properties')]</field>
+    </record>
+</odoo>

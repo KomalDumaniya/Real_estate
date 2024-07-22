@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="estate_view_form_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.account.inherit</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="real_estate.account_analytic_account_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/div/button[@name='action_view_product']" position="before">
+                <button name="action_view_property" type="object" class="oe_stat_button" icon="fa-file-text-o">
+                    <div class="o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="count_property"/>
+                        </span>
+                        <span class="o_stat_text">Remaining Property</span>
+                    </div>
+                </button>
+            </xpath>
+            <xpath expr="//group/group/field[@name='published']" position="before">
+                <field name="rental_contracts" widget="many2many_tags"/>
+            </xpath>
+            <xpath expr="//group/group/field[@name='property_type']" position="after">
+                <field name="total_property"/>
+            </xpath>
+            </field>
+        </record>
+
+    </odoo>

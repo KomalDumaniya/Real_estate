@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="product_demo" model="product.template">
+            <field name="name">Gas</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="standard_price">500.0</field>
+            <field name="list_price">650.0</field>
+            <field name="detailed_type">consu</field>
+        </record>
+        <record id="productt_demo" model="product.template">
+            <field name="name">Plumbing</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="standard_price">500.0</field>
+            <field name="list_price">450.0</field>
+            <field name="detailed_type">consu</field>
+        </record>
+        <record id="producttt_demo" model="product.template">
+            <field name="name">Electricity</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="standard_price">500.0</field>
+            <field name="list_price">850.0</field>
+            <field name="detailed_type">consu</field>
+        </record>
+        <record id="productttt_demo" model="product.template">
+            <field name="name">Water</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="standard_price">500.0</field>
+            <field name="list_price">750.0</field>
+            <field name="detailed_type">consu</field>
+        </record>
+    </data>
+</odoo>
