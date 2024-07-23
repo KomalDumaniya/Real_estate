@@ -24,7 +24,7 @@ Developed a custom module in Odoo for real estate management  Integrated feature
     bash
     ./odoo-bin
     
-3. Go to the Apps menu in Odoo, search for "Real Estate Management", and install the module.
+4. Go to the Apps menu in Odoo, search for "Real Estate Management", and install the module.
 
 
 ## Usage
