@@ -6,9 +6,9 @@ Developed a custom module in Odoo for real estate management  Integrated feature
 
 ## Features
 
-- Property Listing*: Manage detailed listings for sale and rent properties.
-- Rental Contracts: Create and manage rental contracts.
-- Custom Views and Fields: Customized Odoo views and fields to enhance property management.
+- **Property Listing**: Manage detailed listings for sale and rent properties.
+- **Rental Contracts**: Create and manage rental contracts.
+- **Custom Views and Fields**: Customized Odoo views and fields to enhance property management.
 
 ## Installation
 
